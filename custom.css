@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@400;500;700&display=swap');
+
+.stApp {
+    font-family: 'Roboto', sans-serif;
+}
+
+.main-card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.success-text {
+    color: #43A047;
+}
+
+.warning-text {
+    color: #FFA000;
+}
+
+.st-emotion-cache-1v0mbdj.e115fcil1 {
+    border-radius: 10px;
+}
+
+.percentage-display {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    color: #1E88E5;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .percentage-display {
+        font-size: 2rem;
+    }
+}
+
+/* Hide anchor links in headers */
+.stMarkdown h1 span a,
+.stMarkdown h2 span a,
+.stMarkdown h3 span a {
+    display: none !important;
+}
+
+/* Remove extra padding/margin from header spans */
+.stMarkdown h1 span,
+.stMarkdown h2 span,
+.stMarkdown h3 span {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Hide deploy button and menu */
+.stDeployButton,
+[data-testid="stToolbar"] {
+    display: none !important;
+}
+
+/* Hide the hamburger menu button */
+button[kind="header"] {
+    display: none !important;
+}
+
+/* Remove the top margin/padding that these elements usually occupy */
+header[data-testid="stHeader"] {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* Footer styles */
+.footer-container {
+    text-align: center;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.footer-container img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
+}
+
+.footer-container img:hover {
+    transform: scale(1.1);
+}
+
+.footer-container a:hover {
+    text-decoration: underline !important;
+}
