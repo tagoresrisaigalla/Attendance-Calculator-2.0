@@ -8,14 +8,14 @@ RUN echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >
 RUN apt-get update && apt-get install -y google-chrome-stable
 
 # Auto-detect Chrome version and install matching Chromedriver
-RUN sh -c 'CHROME_VERSION=$(google-chrome --version | grep -Eo "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+") && \
-    CHROME_MAJOR=$(echo $CHROME_VERSION | cut -d"." -f1) && \
-    CHROMEDRIVER_VERSION=$(curl -sS chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_MAJOR) && \
-    if [ -z "$CHROMEDRIVER_VERSION" ]; then CHROMEDRIVER_VERSION="133.0.0.0"; fi && \
+RUN CHROME_VERSION=$(google-chrome --version | grep -Eo "[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+") && \
+    CHROME_MAJOR=$(echo $CHROME_VERSION | cut -d'.' -f1) && \
+    CHROMEDRIVER_VERSION=$(curl -sS "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${CHROME_MAJOR}") && \
+    { if [ -z "$CHROMEDRIVER_VERSION" ]; then CHROMEDRIVER_VERSION="133.0.0.0"; fi; } && \
     echo "Using ChromeDriver version: ${CHROMEDRIVER_VERSION}" && \
-    wget -O /tmp/chromedriver.zip https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip && \
+    wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip" && \
     unzip /tmp/chromedriver.zip -d /usr/local/bin/ && \
-    rm /tmp/chromedriver.zip'
+    rm /tmp/chromedriver.zip
 
 # Set the working directory
 WORKDIR /app
