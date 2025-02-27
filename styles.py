@@ -1,4 +1,30 @@
-import streamlit as st
+# Add this function to your styles.py file
+
+def add_google_analytics(tracking_id):
+    """
+    Adds Google Analytics tracking to the Streamlit app.
+    
+    Args:
+        tracking_id (str): Your Google Analytics tracking ID (format: G-XXXXXXXXXX)
+    """
+    # Google Analytics 4 tracking script
+    ga_script = f"""
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={tracking_id}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){{dataLayer.push(arguments);}}
+        gtag('js', new Date());
+        gtag('config', '{tracking_id}');
+    </script>
+    """
+    
+    # Inject the script using st.components.html
+    import streamlit as st
+    from streamlit.components.v1 import html
+    
+    # Use minimal height to avoid taking up space
+    html(ga_script, height=0)
 
 def apply_custom_styles():
     """Apply custom styles to the Streamlit app"""

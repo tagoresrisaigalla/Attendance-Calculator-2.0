@@ -1,3 +1,5 @@
+# Add this import at the top with your other imports
+from styles import apply_custom_styles, local_css, add_google_analytics
 import streamlit as st
 import plotly.graph_objects as go
 from calculator import (
@@ -41,6 +43,9 @@ st.set_page_config(
     page_icon="📊",
     layout="wide"
 )
+
+# Apply Google Analytics tracking
+add_google_analytics("G-DDP8RPPKGF")  # Replace with your actual tracking ID
 
 # Apply custom styles
 apply_custom_styles()
