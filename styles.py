@@ -1,4 +1,39 @@
-# Add this function to your styles.py file
+# styles.py
+import streamlit as st  # Add this import at the top
+
+def apply_custom_styles():
+    """Apply custom styles to the Streamlit app"""
+    st.markdown("""
+        <style>
+            .percentage-display {
+                font-size: 2.5rem;
+                font-weight: bold;
+                color: #1E88E5;
+                text-align: center;
+                margin: 1rem 0;
+                padding: 0.5rem;
+                border-radius: 10px;
+                background-color: #f0f8ff;
+            }
+            
+            .stApp {
+                background-color: #fafafa;
+            }
+            
+            .stNumberInput > div > div > input {
+                text-align: center;
+            }
+            
+            h1, h3 {
+                color: #0D47A1;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
+def local_css(file_name):
+    """Load local CSS file"""
+    with open(file_name) as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
 def add_google_analytics(tracking_id):
     """
@@ -20,7 +55,6 @@ def add_google_analytics(tracking_id):
     """
     
     # Inject the script using st.components.html
-    import streamlit as st
     from streamlit.components.v1 import html
     
     # Use minimal height to avoid taking up space
